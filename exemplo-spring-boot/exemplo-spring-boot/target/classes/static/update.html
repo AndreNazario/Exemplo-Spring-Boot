@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    
+<form id="formulario">
+
+
+        <label for="id">ID:</label>
+        <input type="number" id="id">
+
+        <label for="nameProduct">Nome do Produto:</label>
+        <input type="text" id="nameProduct">
+
+        <label for="price">Preço:</label>
+        <input type="number" id="price">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+
+        document.getElementById('formulario').addEventListener('submit', function(e){
+            e.preventDefault(); // Impede o envio do formulário
+
+            const product ={
+                id: parseInt(document.getElementById('id').value),
+                nameProduct: document.getElementById('nameProduct').value,
+                price: parseFloat(document.getElementById('price').value)
+            };
+
+            fetch('http://localhost:8080/Product',{
+                method: 'PUT', // Mudar o método para PUT (atualização)
+                headers: {
+                    'Content-Type': 'application/json'},
+                    body: JSON.stringify(product)
+                })
+            });
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
